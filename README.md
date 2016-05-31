@@ -22,6 +22,7 @@ Given this the common operations are:
 
 
 | operation             | internet      | local-package-dir | root                      |
+|-----------------------|---------------|-------------------|---------------------------|
 | create                | n/a           | download          | install (from internet), local-install (from local-package-dir) |
 | read/package-list     | grep-package  | ?? list-download  | list                      |
 | read/package-find     | grep-package  | pipe list-download to grep | pipe list to grep|
