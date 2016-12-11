@@ -1,7 +1,9 @@
-# cyg - a small command line utility to install cygwin packages on the machine
+# cyg - a small command line utility to install cygwin packages 
 
-cyg is a small utility to install cygwin packages from the comand line on the machine.
-The main use case is to help automate new machine setup, and to allow declaratively what packages must be installed.
+cyg is a small utility to install cygwin packages on a windows machine, from the comand line.
+The main use cases are:
+- do cygwin setup/maintenance operations from the command line
+- help automate setting up new windows machine declaratively (i.e. have a file with pacakges to be installed)
 
 
 # Commands supported by cyg utility
