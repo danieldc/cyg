@@ -1,0 +1,10 @@
+git
+git-completion
+bash-completion
+bc
+gzip
+colordiff
+curl
+vim
+wget
+xxd
