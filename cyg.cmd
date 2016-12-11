@@ -51,9 +51,9 @@ goto lblExit
 
 :lblInstall
 call :setCygwinSetupApp
-echo TODO: transform `a b c` to `a,b,c`
+REM echo TODO: transform `a b c` to `a,b,c`
 set __PACKAGES=%1
-if "%__PACKAGES%" == "" (
+if [%__PACKAGES%] == [] (
     echo.
     echo Error: no packages to install
     echo.
@@ -72,9 +72,9 @@ goto :lblExit
 
 :lblUninstall
 call :setCygwinSetupApp
-echo TODO: transform `a b c` to `a,b,c`
+REM echo TODO: transform `a b c` to `a,b,c`
 set __PACKAGES=%1
-if "%__PACKAGES%" == "" (
+if [%__PACKAGES%] == [] (
     echo.
     echo Error: no packages to install
     echo.
@@ -123,9 +123,9 @@ goto :lblExit
 
 :lblUpgrade
 call :setCygwinSetupApp
-echo TODO: transform `a b c` to `a,b,c`
+REM echo TODO: transform `a b c` to `a,b,c`
 set __PACKAGES=%1
-REM if "%__PACKAGES%" == "" (
+REM if [%__PACKAGES%] == [] (
 REM     echo.
 REM     echo Error: no packages to install
 REM     echo.
