@@ -1,33 +1,29 @@
-From what I can see, the cygin installer is split into 2 programs:
-- setup (setup-x86_64.exe for 64 bit, or setup.exe for 32 bit)
-- cygcheck
+# cyg - a small command line utility to install cygwin packages on the machine
 
-The setup program is expected to be run when no cygwin process is active, the cygcheck can be run within bash (though, as any cygwin program, it can be also run inside cmd.exe).
-The setup program is used mainly to install or remove packages, or more generically, for operations that require write access.
-The cygcheck program is used for listing related activities, or more generically, for operations that are read-only in nature.
-
-The way cygwin setup installer works is:
-- internet (cygwin.com, or mirror) stores packages.
-- packages get downloaded to the local cache, under `local-package-dir`
-- packages get installed to the machine, under `root` directory
-
-Given this the common operations are:
-- install: install from internet to `root` dir
-- uninstall: remove packages from the `root` dir
-- download: download package from internet to `local-package-dir`
-- undownload: ??? remove packages from `local-package-dir`
-- list-download: ??? list packages under `local-package-dir`
-- local-install: install from `local-package-dir` to the `root` dir
-- list: list packages under `root` (i.e. installed packages)
+cyg is a small utility to install cygwin packages from the comand line on the machine.
+The main use case is to help automate new machine setup, and to allow declaratively what packages must be installed.
 
 
-| operation             | internet      | local-package-dir | root                      |
-|-----------------------|---------------|-------------------|---------------------------|
-| create                | n/a           | download          | install (from internet), local-install (from local-package-dir) |
-| read/package-list     | grep-package  | ?? list-download  | list                      |
-| read/package-find     | grep-package  | pipe list-download to grep | pipe list to grep|
-| read/package-details  | n/a           | details           | n/a (use details)         |
-| read/package-grep     | not important | grep-details      | n/a (use grep-details)    |
-| read/package-from-file| ??            | find-package      | n/a (use find-package)    |
-| update                | n/a           | download          | ??                        |
-| delete                | n/a           | ??                | uninstall                 |
+# Commands supported by cyg utility
+
+cyg install p1,p2,p3   -- install p1, p2 and p3 packages
+cyg download p1,p2,p3  -- download p1, p2 and p3 packages from internet
+cyg local-install p1,p2,p3  -- install p1, p2 and p3 packages from local dir
+cyg uninstall p1,p2,p3  -- uninstall p1, p2 and p3 packages
+cyg list               -- list all installed packages
+cyg local-list         -- list all locally downloaded packages
+cyg details p1 p2 p3   -- get details about packages p1, p2 and p3
+cyg grep-details foo   -- grep package details for foo string
+cyg find-package /a/b/c1 /a/b/c2 ...   -- get package containing /a/b/c file
+cyg grep-package packageNameRegexp     -- grep online packages from cygwin.com using packageNameRegexp
+cyg upgrade             -- upgrade all packages to their latest version
+cyg upgrade p1,p2,p3    -- upgrade p1,p2 and p3 packages to their latest version
+
+
+# Configuration
+
+The cyg utility expects the following directory setup:
+- c:\cygwin64-setup\ -- the local cache for cygwin packages
+- c:\cygwin64\ -- the place where cygwin will be installed
+
+
